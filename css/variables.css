@@ -1,0 +1,43 @@
+/* ═══════════════════════════════════════
+   DESIGN TOKENS — PV Imperiale
+   ═══════════════════════════════════════ */
+
+:root {
+    /* ── Colors ── */
+    --c-bg:           #0a0a0c;
+    --c-bg-alt:       #111114;
+    --c-bg-card:      #16161a;
+    --c-surface:      #1c1c21;
+    --c-ticker-bg:    #060608;
+
+    --c-gold:         #c9a84c;
+    --c-gold-light:   #dfc06e;
+    --c-gold-dark:    #a8872e;
+
+    --c-text:         #e8e6e1;
+    --c-text-muted:   #8a8a8e;
+    --c-text-dim:     #5a5a5e;
+    --c-border:       #2a2a2e;
+
+    --c-green:        #22c55e;
+    --c-green-bg:     rgba(34, 197, 94, 0.10);
+    --c-red:          #ef4444;
+    --c-red-bg:       rgba(239, 68, 68, 0.10);
+
+    /* ── Typography ── */
+    --f-heading:      'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --f-body:         'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /* ── Spacing ── */
+    --section-pad:    8rem;
+    --container-max:  1200px;
+    --container-pad:  2rem;
+
+    /* ── Transitions ── */
+    --ease-out:       cubic-bezier(0.16, 1, 0.3, 1);
+    --duration:       0.4s;
+
+    /* ── Layout ── */
+    --ticker-h:       36px;
+    --navbar-h:       64px;
+}

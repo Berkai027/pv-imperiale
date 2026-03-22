@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PV Imperiale — Family Office independente. Gestão patrimonial integrada, planejamento sucessório, investimentos offshore e governança familiar.">
+    <meta name="keywords" content="family office, gestão patrimonial, investimentos offshore, planejamento sucessório, governança familiar, wealth management">
+    <meta name="author" content="PV Imperiale">
+    <meta name="theme-color" content="#0a0a0c">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="PV Imperiale | Family Office">
+    <meta property="og:description" content="Gestão patrimonial integrada com visão global, governança familiar e planejamento sucessório.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+
+    <title>PV Imperiale | Family Office</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/ticker.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/services.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- ══════════ NYSE TICKER TAPE ══════════ -->
+    <div class="ticker-tape" id="tickerTape" role="marquee" aria-label="Cotações do mercado financeiro">
+        <div class="ticker-track">
+            <div class="ticker-content" id="tickerContent">
+                <span class="ticker-loading">Carregando cotações...</span>
+            </div>
+            <div class="ticker-content" id="tickerContentClone" aria-hidden="true"></div>
+        </div>
+    </div>
+
+    <!-- ══════════ NAVIGATION ══════════ -->
+    <header>
+        <nav class="navbar" id="navbar" role="navigation" aria-label="Navegação principal">
+            <div class="nav-container">
+                <a href="#" class="logo" aria-label="PV Imperiale - Página inicial">
+                    <span class="logo-pv">PV</span>
+                    <span class="logo-separator" aria-hidden="true"></span>
+                    <span class="logo-imperiale">IMPERIALE</span>
+                </a>
+
+                <ul class="nav-links" id="navLinks" role="menubar">
+                    <li role="none"><a href="#sobre" role="menuitem">Sobre</a></li>
+                    <li role="none"><a href="#servicos" role="menuitem">Serviços</a></li>
+                    <li role="none"><a href="#abordagem" role="menuitem">Abordagem</a></li>
+                    <li role="none"><a href="#contato" role="menuitem">Contato</a></li>
+                </ul>
+
+                <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ══════════ HERO ══════════ -->
+        <section class="hero" id="hero">
+            <div class="hero-bg" aria-hidden="true">
+                <div class="hero-gradient"></div>
+                <div class="hero-pattern"></div>
+            </div>
+
+            <div class="hero-content">
+                <p class="hero-tagline">Family Office</p>
+                <h1 class="hero-title">
+                    Preservamos e multiplicamos<br>
+                    o legado da sua família
+                </h1>
+                <p class="hero-subtitle">
+                    Gestão patrimonial integrada com visão global,<br>
+                    governança familiar e planejamento sucessório.
+                </p>
+                <a href="#servicos" class="hero-cta">Conheça nossos serviços</a>
+            </div>
+
+            <div class="hero-scroll" aria-hidden="true">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- ══════════ SOBRE ══════════ -->
+        <section class="section section--about" id="sobre">
+            <div class="container">
+                <div class="section__grid">
+                    <div class="section__label">
+                        <span class="section__number">01</span>
+                        <span class="section__tag">Sobre nós</span>
+                    </div>
+                    <div class="section__body">
+                        <h2 class="section__title">
+                            Uma parceria construída<br>sobre <em>confiança</em>
+                        </h2>
+                        <p class="section__text">
+                            A PV Imperiale é um Family Office independente dedicado à gestão integral
+                            do patrimônio de famílias com alto poder aquisitivo. Combinamos sofisticação
+                            financeira, visão global e atendimento personalizado para proteger e fazer
+                            crescer o legado de cada família que atendemos.
+                        </p>
+                        <p class="section__text">
+                            Nossa abordagem fiduciária garante que cada decisão seja tomada
+                            exclusivamente no melhor interesse dos nossos clientes, com total
+                            transparência e alinhamento de objetivos.
+                        </p>
+
+                        <div class="stats">
+                            <div class="stats__item">
+                                <span class="stats__value">360°</span>
+                                <span class="stats__label">Visão Patrimonial</span>
+                            </div>
+                            <div class="stats__item">
+                                <span class="stats__value">100%</span>
+                                <span class="stats__label">Independência</span>
+                            </div>
+                            <div class="stats__item">
+                                <span class="stats__value">Global</span>
+                                <span class="stats__label">Atuação</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ SERVIÇOS ══════════ -->
+        <section class="section section--services" id="servicos">
+            <div class="container">
+                <div class="section__header">
+                    <div class="section__label">
+                        <span class="section__number">02</span>
+                        <span class="section__tag">Serviços</span>
+                    </div>
+                    <h2 class="section__title">
+                        Soluções integradas para<br>a gestão do seu patrimônio
+                    </h2>
+                </div>
+
+                <div class="services">
+                    <!-- Investimentos -->
+                    <article class="service-card" data-reveal>
+                        <div class="service-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="4,28 12,20 20,24 28,14 36,18"/>
+                                <polyline points="28,14 36,14 36,18"/>
+                                <line x1="4" y1="36" x2="36" y2="36"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-card__title">Investimentos</h3>
+                        <ul class="service-card__list">
+                            <li>Investimentos Offshore</li>
+                            <li>Carteira administrada e fundos exclusivos</li>
+                            <li>Consolidação global dos investimentos</li>
+                            <li>Acompanhamento tributário</li>
+                        </ul>
+                    </article>
+
+                    <!-- Planejamento Patrimonial -->
+                    <article class="service-card" data-reveal>
+                        <div class="service-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M8,36 L8,8 L24,8 L32,16 L32,36 Z"/>
+                                <polyline points="24,8 24,16 32,16"/>
+                                <line x1="14" y1="22" x2="26" y2="22"/>
+                                <line x1="14" y1="28" x2="22" y2="28"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-card__title">Planejamento Patrimonial</h3>
+                        <ul class="service-card__list">
+                            <li>Estruturas Offshore</li>
+                            <li>Sucessório | Tributário | Organização patrimonial</li>
+                            <li>Governança familiar</li>
+                            <li>Acompanhamento contínuo</li>
+                        </ul>
+                    </article>
+
+                    <!-- Gestão de Contas -->
+                    <article class="service-card" data-reveal>
+                        <div class="service-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="10" width="32" height="22" rx="2"/>
+                                <line x1="4" y1="18" x2="36" y2="18"/>
+                                <line x1="12" y1="26" x2="20" y2="26"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-card__title">Gestão de Contas</h3>
+                        <ul class="service-card__list">
+                            <li>Controle de liquidez e fluxo de caixa</li>
+                            <li>Tesouraria familiar e holding</li>
+                            <li>Seguros</li>
+                            <li>Controle de mútuos e doações</li>
+                            <li>Suporte contábil / funcionários pessoais</li>
+                        </ul>
+                    </article>
+
+                    <!-- Gestão de Imóveis -->
+                    <article class="service-card" data-reveal>
+                        <div class="service-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6,36 V18 L20,6 L34,18 V36"/>
+                                <rect x="16" y="24" width="8" height="12"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-card__title">Gestão de Imóveis</h3>
+                        <ul class="service-card__list">
+                            <li>Gestão da carteira imobiliária</li>
+                            <li>Consolidação global dos imóveis</li>
+                            <li>Precificação dos imóveis</li>
+                            <li>Novos negócios</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ ABORDAGEM ══════════ -->
+        <section class="section section--approach" id="abordagem">
+            <div class="container">
+                <div class="section__grid">
+                    <div class="section__label">
+                        <span class="section__number">03</span>
+                        <span class="section__tag">Abordagem</span>
+                    </div>
+                    <div class="section__body">
+                        <h2 class="section__title">Como atuamos</h2>
+
+                        <div class="steps">
+                            <div class="steps__item" data-reveal>
+                                <span class="steps__number">I</span>
+                                <div class="steps__content">
+                                    <h4 class="steps__title">Diagnóstico Patrimonial</h4>
+                                    <p class="steps__text">Mapeamento completo dos ativos, passivos, estruturas societárias e objetivos familiares.</p>
+                                </div>
+                            </div>
+                            <div class="steps__item" data-reveal>
+                                <span class="steps__number">II</span>
+                                <div class="steps__content">
+                                    <h4 class="steps__title">Planejamento Estratégico</h4>
+                                    <p class="steps__text">Definição de estratégias personalizadas de investimento, proteção e sucessão patrimonial.</p>
+                                </div>
+                            </div>
+                            <div class="steps__item" data-reveal>
+                                <span class="steps__number">III</span>
+                                <div class="steps__content">
+                                    <h4 class="steps__title">Implementação</h4>
+                                    <p class="steps__text">Execução coordenada com especialistas em cada área, garantindo eficiência e compliance.</p>
+                                </div>
+                            </div>
+                            <div class="steps__item" data-reveal>
+                                <span class="steps__number">IV</span>
+                                <div class="steps__content">
+                                    <h4 class="steps__title">Monitoramento Contínuo</h4>
+                                    <p class="steps__text">Acompanhamento permanente com relatórios consolidados e ajustes conforme cenários de mercado.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ CONTATO ══════════ -->
+        <section class="section section--contact" id="contato">
+            <div class="container">
+                <div class="contact">
+                    <div class="contact__info">
+                        <div class="section__label">
+                            <span class="section__number">04</span>
+                            <span class="section__tag">Contato</span>
+                        </div>
+                        <h2 class="section__title">
+                            Vamos conversar sobre<br>o futuro do seu patrimônio
+                        </h2>
+                        <p class="section__text">
+                            Entre em contato para uma conversa confidencial sobre
+                            como podemos ajudar na gestão e proteção do patrimônio
+                            da sua família.
+                        </p>
+
+                        <address class="contact__details">
+                            <div class="contact__item">
+                                <span class="contact__label">Email</span>
+                                <a href="mailto:contato@pvimperiale.com.br">contato@pvimperiale.com.br</a>
+                            </div>
+                            <div class="contact__item">
+                                <span class="contact__label">Telefone</span>
+                                <a href="tel:+5511999999999">+55 (11) 99999-9999</a>
+                            </div>
+                        </address>
+                    </div>
+
+                    <div class="contact__form-wrapper">
+                        <form class="contact-form" id="contactForm" novalidate>
+                            <div class="contact-form__group">
+                                <input type="text" id="name" name="name" required autocomplete="name" placeholder=" ">
+                                <label for="name">Nome completo</label>
+                            </div>
+                            <div class="contact-form__group">
+                                <input type="email" id="email" name="email" required autocomplete="email" placeholder=" ">
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="contact-form__group">
+                                <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder=" ">
+                                <label for="phone">Telefone</label>
+                            </div>
+                            <div class="contact-form__group">
+                                <textarea id="message" name="message" rows="4" required placeholder=" "></textarea>
+                                <label for="message">Mensagem</label>
+                            </div>
+                            <button type="submit" class="contact-form__submit">
+                                <span class="contact-form__submit-text">Enviar mensagem</span>
+                                <span class="contact-form__submit-loading" aria-hidden="true">Enviando...</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ══════════ FOOTER ══════════ -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="#" class="logo" aria-label="PV Imperiale">
+                        <span class="logo-pv">PV</span>
+                        <span class="logo-separator" aria-hidden="true"></span>
+                        <span class="logo-imperiale">IMPERIALE</span>
+                    </a>
+                    <p class="footer__tagline">
+                        Family Office independente dedicado<br>
+                        à gestão integral do seu patrimônio.
+                    </p>
+                </div>
+
+                <nav class="footer__nav" aria-label="Links do rodapé">
+                    <h4 class="footer__heading">Navegação</h4>
+                    <ul>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#abordagem">Abordagem</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer__nav" aria-label="Serviços">
+                    <h4 class="footer__heading">Serviços</h4>
+                    <ul>
+                        <li><a href="#servicos">Investimentos</a></li>
+                        <li><a href="#servicos">Planejamento Patrimonial</a></li>
+                        <li><a href="#servicos">Gestão de Contas</a></li>
+                        <li><a href="#servicos">Gestão de Imóveis</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2026 PV Imperiale. Todos os direitos reservados.</p>
+                <p class="footer__disclaimer">
+                    As informações contidas neste site são de caráter informativo
+                    e não constituem oferta de produtos ou serviços financeiros.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/ticker.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

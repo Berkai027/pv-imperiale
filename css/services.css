@@ -1,0 +1,83 @@
+/* ═══════════════════════════════════════
+   SERVICE CARDS
+   ═══════════════════════════════════════ */
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.service-card {
+    background: var(--c-bg-card);
+    border: 1px solid var(--c-border);
+    padding: 2.5rem;
+    transition: border-color var(--duration) var(--ease-out),
+                transform var(--duration) var(--ease-out);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--c-gold), transparent);
+    opacity: 0;
+    transition: opacity var(--duration);
+}
+
+.service-card:hover {
+    border-color: rgba(201, 168, 76, 0.3);
+    transform: translateY(-4px);
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+/* ── Icon ── */
+.service-card__icon {
+    width: 40px;
+    height: 40px;
+    color: var(--c-gold);
+    margin-bottom: 1.5rem;
+}
+
+/* ── Title ── */
+.service-card__title {
+    font-family: var(--f-heading);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+    color: var(--c-text);
+}
+
+/* ── List ── */
+.service-card__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.service-card__list li {
+    font-size: 0.88rem;
+    color: var(--c-text-muted);
+    font-weight: 300;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.service-card__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--c-gold-dark);
+}
