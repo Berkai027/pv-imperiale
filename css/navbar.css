@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════
-   NAVBAR
+   NAVBAR — Transparent → Solid on scroll
    ═══════════════════════════════════════ */
 
 .navbar {
@@ -8,16 +8,16 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: 1.2rem 0;
+    padding: 1.4rem 0;
     transition: all var(--duration) var(--ease-out);
 }
 
 .navbar.is-scrolled {
-    background: rgba(10, 10, 12, 0.92);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(11, 10, 13, 0.94);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     padding: 0.8rem 0;
-    border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+    border-bottom: 1px solid rgba(123, 45, 59, 0.12);
 }
 
 .nav-container {
@@ -33,29 +33,29 @@
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.85rem;
 }
 
 .logo-pv {
     font-family: var(--f-heading);
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 600;
-    color: var(--c-gold);
-    letter-spacing: 0.05em;
+    color: var(--c-primary-light);
+    letter-spacing: 0.04em;
 }
 
 .logo-separator {
     width: 1px;
-    height: 24px;
-    background: var(--c-gold-dark);
-    opacity: 0.5;
+    height: 28px;
+    background: var(--c-primary-dark);
+    opacity: 0.4;
 }
 
 .logo-imperiale {
     font-family: var(--f-body);
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 500;
-    letter-spacing: 0.35em;
+    letter-spacing: 0.38em;
     color: var(--c-text);
 }
 
@@ -66,29 +66,31 @@
 }
 
 .nav-links a {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 400;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--c-text-muted);
     transition: color 0.3s;
     position: relative;
+    padding-bottom: 4px;
 }
 
 .nav-links a::after {
     content: '';
     position: absolute;
-    bottom: -4px;
+    bottom: 0;
     left: 0;
     width: 0;
     height: 1px;
-    background: var(--c-gold);
-    transition: width 0.3s;
+    background: var(--c-primary-light);
+    transition: width 0.3s var(--ease-out);
 }
 
 .nav-links a:hover,
 .nav-links a:focus-visible {
-    color: var(--c-gold);
+    color: var(--c-primary-light);
+    transform: translateY(-1px);
 }
 
 .nav-links a:hover::after,

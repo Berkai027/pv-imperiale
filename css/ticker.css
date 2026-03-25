@@ -4,7 +4,7 @@
 
 .ticker-tape {
     background: var(--c-ticker-bg);
-    border-bottom: 1px solid var(--c-border);
+    border-bottom: 1px solid rgba(123, 45, 59, 0.15);
     height: var(--ticker-h);
     overflow: hidden;
     position: fixed;
@@ -79,7 +79,6 @@
     background: var(--c-red-bg);
 }
 
-/* ── Divider ── */
 .ticker-divider {
     width: 1px;
     height: 14px;
@@ -87,7 +86,6 @@
     flex-shrink: 0;
 }
 
-/* ── Animation ── */
 @keyframes ticker-scroll {
     0%   { transform: translateX(0); }
     100% { transform: translateX(-50%); }

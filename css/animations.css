@@ -1,0 +1,42 @@
+/* ═══════════════════════════════════════
+   ANIMATIONS — Centralized utilities
+   ═══════════════════════════════════════ */
+
+/* ── Section-level fade ── */
+.section[data-reveal-section] {
+    opacity: 0;
+    transition: opacity 0.8s var(--ease-out);
+}
+
+.section[data-reveal-section].is-visible {
+    opacity: 1;
+}
+
+/* ── Reduced motion preference ── */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    [data-reveal],
+    .section[data-reveal-section] {
+        opacity: 1;
+        transform: none;
+    }
+
+    .hero-tagline,
+    .hero-title,
+    .hero-subtitle,
+    .hero-cta,
+    .hero-scroll {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+
+    .ticker-track {
+        animation-duration: 120s !important;
+    }
+}

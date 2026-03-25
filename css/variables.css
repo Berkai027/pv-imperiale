@@ -1,43 +1,56 @@
 /* ═══════════════════════════════════════
    DESIGN TOKENS — PV Imperiale
+   Paleta: Bordô Clássico Italiano
    ═══════════════════════════════════════ */
 
 :root {
-    /* ── Colors ── */
-    --c-bg:           #0a0a0c;
-    --c-bg-alt:       #111114;
-    --c-bg-card:      #16161a;
-    --c-surface:      #1c1c21;
-    --c-ticker-bg:    #060608;
+    /* ── Bordô / Burgundy ── */
+    --c-primary:        #7B2D3B;
+    --c-primary-light:  #9E4A5A;
+    --c-primary-dark:   #5A1525;
+    --c-primary-glow:   rgba(123, 45, 59, 0.15);
+    --c-primary-subtle: rgba(123, 45, 59, 0.08);
 
-    --c-gold:         #c9a84c;
-    --c-gold-light:   #dfc06e;
-    --c-gold-dark:    #a8872e;
+    /* ── Backgrounds ── */
+    --c-bg:             #0B0A0D;
+    --c-bg-alt:         #100F13;
+    --c-bg-card:        #161519;
+    --c-surface:        #1C1B21;
+    --c-ticker-bg:      #07060A;
+    --c-bg-warm:        #F5F0EB;
 
-    --c-text:         #e8e6e1;
-    --c-text-muted:   #8a8a8e;
-    --c-text-dim:     #5a5a5e;
-    --c-border:       #2a2a2e;
+    /* ── Text ── */
+    --c-text:           #EAE6E0;
+    --c-text-muted:     #9A9498;
+    --c-text-dim:       #5E585C;
 
-    --c-green:        #22c55e;
-    --c-green-bg:     rgba(34, 197, 94, 0.10);
-    --c-red:          #ef4444;
-    --c-red-bg:       rgba(239, 68, 68, 0.10);
+    /* ── Borders ── */
+    --c-border:         #2A272E;
+    --c-border-light:   #3A373E;
+
+    /* ── Accents ── */
+    --c-cream:          #D4C5B0;
+    --c-green:          #22c55e;
+    --c-green-bg:       rgba(34, 197, 94, 0.10);
+    --c-red:            #ef4444;
+    --c-red-bg:         rgba(239, 68, 68, 0.10);
 
     /* ── Typography ── */
-    --f-heading:      'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-    --f-body:         'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --f-heading:        'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --f-body:           'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
     /* ── Spacing ── */
-    --section-pad:    8rem;
-    --container-max:  1200px;
-    --container-pad:  2rem;
+    --section-pad:      7rem;
+    --container-max:    1200px;
+    --container-pad:    2rem;
 
     /* ── Transitions ── */
-    --ease-out:       cubic-bezier(0.16, 1, 0.3, 1);
-    --duration:       0.4s;
+    --ease-out:         cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-smooth:      cubic-bezier(0.4, 0, 0.2, 1);
+    --duration:         0.4s;
+    --duration-slow:    0.7s;
 
     /* ── Layout ── */
-    --ticker-h:       36px;
-    --navbar-h:       64px;
+    --ticker-h:         36px;
+    --navbar-h:         72px;
 }

@@ -39,9 +39,9 @@ const ContactForm = (() => {
 
             // Success feedback
             submitBtn.classList.remove('is-loading');
-            submitBtn.style.background = 'var(--c-gold)';
-            submitBtn.style.color = 'var(--c-bg)';
-            submitBtn.style.borderColor = 'var(--c-gold)';
+            submitBtn.style.background = 'var(--c-green)';
+            submitBtn.style.color = '#fff';
+            submitBtn.style.borderColor = 'var(--c-green)';
 
             const textEl = submitBtn.querySelector('.contact-form__submit-text');
             textEl.textContent = 'Mensagem enviada!';

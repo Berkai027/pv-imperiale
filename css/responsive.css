@@ -2,7 +2,6 @@
    RESPONSIVE BREAKPOINTS
    ═══════════════════════════════════════ */
 
-/* ── Tablet ── */
 @media (max-width: 1024px) {
     .section__grid {
         grid-template-columns: 1fr;
@@ -24,32 +23,41 @@
     }
 }
 
-/* ── Mobile ── */
 @media (max-width: 768px) {
     :root {
-        --section-pad: 5rem;
+        --section-pad: 4.5rem;
         --container-pad: 1.25rem;
     }
 
-    /* Navbar mobile menu */
+    /* Mobile nav */
     .nav-links {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 70%;
+        width: 75%;
         height: 100vh;
-        background: var(--c-bg-card);
+        background: var(--c-primary-dark);
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 2rem;
+        gap: 2.5rem;
         transition: right var(--duration) var(--ease-out);
-        border-left: 1px solid var(--c-border);
+        border-left: 1px solid rgba(158, 74, 90, 0.2);
         z-index: 999;
     }
 
     .nav-links.is-open {
         right: 0;
+    }
+
+    .nav-links a {
+        color: rgba(255,255,255,0.75);
+        font-size: 0.85rem;
+    }
+
+    .nav-links a:hover {
+        color: #fff;
+        transform: none;
     }
 
     .nav-toggle {
@@ -65,7 +73,34 @@
     /* Stats wrap */
     .stats {
         flex-wrap: wrap;
-        gap: 2rem;
+        gap: 2.5rem;
+    }
+
+    .stats__value {
+        font-size: 2.2rem;
+    }
+
+    /* CTA break — disable fixed attachment on mobile */
+    .cta-break {
+        padding: 4rem 0;
+    }
+
+    .cta-break__bg {
+        background-attachment: scroll;
+    }
+
+    .cta-break__title {
+        font-size: 1.8rem;
+    }
+
+    /* Steps — remove hover padding shift on mobile */
+    .steps__item:hover {
+        padding-left: 2rem;
+    }
+
+    .steps__number {
+        font-size: 2.2rem;
+        min-width: 3rem;
     }
 
     /* Footer 1-col */
@@ -83,16 +118,34 @@
         text-align: center;
     }
 
-    /* Hero sizing */
+    /* Hero */
     .hero-title {
         font-size: 2rem;
     }
+
+    .hero-subtitle br {
+        display: none;
+    }
+
+    .hero-tagline::before,
+    .hero-tagline::after {
+        width: 24px;
+    }
+
+    /* Contact form wrapper */
+    .contact__form-wrapper {
+        padding: 1.5rem;
+    }
+
+    /* Disable parallax on mobile (performance) */
+    .hero-image {
+        will-change: auto;
+    }
 }
 
-/* ── Small mobile ── */
 @media (max-width: 400px) {
     .hero-title {
-        font-size: 1.7rem;
+        font-size: 1.65rem;
     }
 
     .service-card {

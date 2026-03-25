@@ -1,5 +1,104 @@
 /* ═══════════════════════════════════════
-   SECTIONS — placeholder kept thin
-   Section base styles live in base.css
-   This file holds section-specific overrides
+   CTA BREAK SECTION
+   Parallax image with burgundy overlay
    ═══════════════════════════════════════ */
+
+.cta-break {
+    position: relative;
+    padding: 7rem 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+.cta-break__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1680589076249-d60896801538?w=1920&q=80&fit=crop');
+    background-size: cover;
+    background-position: center 50%;
+    background-attachment: fixed;
+    filter: grayscale(100%) brightness(0.2) contrast(1.2);
+}
+
+.cta-break__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        160deg,
+        rgba(90, 21, 37, 0.55) 0%,
+        rgba(11, 10, 13, 0.85) 100%
+    );
+}
+
+.cta-break__content {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-break__tagline {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--c-primary-light);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.cta-break__tagline::before,
+.cta-break__tagline::after {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--c-primary-light);
+    opacity: 0.4;
+}
+
+.cta-break__title {
+    font-family: var(--f-heading);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #fff;
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.015em;
+}
+
+.cta-break__btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: transparent;
+    border: 1px solid rgba(158, 74, 90, 0.6);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all var(--duration) var(--ease-out);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-break__btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 25%, rgba(255,255,255,0.08) 50%, transparent 75%);
+    transform: translateX(-100%);
+}
+
+.cta-break__btn:hover {
+    background: var(--c-primary);
+    border-color: var(--c-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(123, 45, 59, 0.3);
+}
+
+.cta-break__btn:hover::after {
+    animation: btn-shimmer 0.6s ease forwards;
+}
