@@ -65,6 +65,19 @@
         z-index: 1001;
     }
 
+    .lang-selector {
+        margin-left: auto;
+        margin-right: 1rem;
+        padding-left: 0;
+        border-left: none;
+        gap: 1px;
+    }
+
+    .lang-selector__btn {
+        font-size: 0.62rem;
+        padding: 3px 6px;
+    }
+
     /* Services 1-col */
     .services {
         grid-template-columns: 1fr;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9X38M2S9T0"></script>
@@ -11,18 +11,22 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PV Imperiale — Multi Family Office independente. Gestão patrimonial 360°, investimentos globais, planejamento sucessório, estruturas offshore e governança familiar para famílias de alto patrimônio.">
-    <meta name="keywords" content="multi family office, gestão patrimonial, investimentos offshore, planejamento sucessório, governança familiar, wealth management, family office Brasil, trust, holding familiar">
+    <meta name="description" content="PV Imperiale — Independent Multi Family Office. 360° wealth management, global investments, succession planning, offshore structures and family governance for high-net-worth families.">
+    <meta name="keywords" content="multi family office, wealth management, offshore investments, succession planning, family governance, family office, trust, holding">
     <meta name="author" content="PV Imperiale">
     <meta name="theme-color" content="#0B0A0D">
 
     <!-- Open Graph -->
     <meta property="og:title" content="PV Imperiale | Multi Family Office">
-    <meta property="og:description" content="Gestão patrimonial 360° com visão global. Investimentos, planejamento sucessório, governança familiar e proteção de legado para famílias de alto patrimônio.">
+    <meta property="og:description" content="360° wealth management with global vision. Investments, succession planning, family governance and legacy protection for high-net-worth families.">
     <meta property="og:type" content="website">
-    <meta property="og:locale" content="pt_BR">
+    <meta property="og:locale" content="en_US">
 
     <title>PV Imperiale | Multi Family Office</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,10 +50,10 @@
 <body>
 
     <!-- ══════════ NYSE TICKER TAPE ══════════ -->
-    <div class="ticker-tape" id="tickerTape" role="marquee" aria-label="Cotações do mercado financeiro">
+    <div class="ticker-tape" id="tickerTape" role="marquee" data-i18n-aria="ticker.aria">
         <div class="ticker-track">
             <div class="ticker-content" id="tickerContent">
-                <span class="ticker-loading">Carregando cotações...</span>
+                <span class="ticker-loading" data-i18n="ticker.loading">Loading quotes...</span>
             </div>
             <div class="ticker-content" id="tickerContentClone" aria-hidden="true"></div>
         </div>
@@ -57,22 +61,30 @@
 
     <!-- ══════════ NAVIGATION ══════════ -->
     <header>
-        <nav class="navbar" id="navbar" role="navigation" aria-label="Navegação principal">
+        <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
             <div class="nav-container">
-                <a href="#" class="logo" aria-label="PV Imperiale - Página inicial">
+                <a href="#" class="logo" data-i18n-aria="nav.logo">
                     <span class="logo-pv">PV</span>
                     <span class="logo-separator" aria-hidden="true"></span>
                     <span class="logo-imperiale">IMPERIALE</span>
                 </a>
 
                 <ul class="nav-links" id="navLinks" role="menubar">
-                    <li role="none"><a href="#sobre" role="menuitem">Sobre</a></li>
-                    <li role="none"><a href="#servicos" role="menuitem">Serviços</a></li>
-                    <li role="none"><a href="#abordagem" role="menuitem">Abordagem</a></li>
-                    <li role="none"><a href="#contato" role="menuitem">Contato</a></li>
+                    <li role="none"><a href="#sobre" role="menuitem" data-i18n="nav.about">About</a></li>
+                    <li role="none"><a href="#servicos" role="menuitem" data-i18n="nav.services">Services</a></li>
+                    <li role="none"><a href="#abordagem" role="menuitem" data-i18n="nav.approach">Approach</a></li>
+                    <li role="none"><a href="#contato" role="menuitem" data-i18n="nav.contact">Contact</a></li>
                 </ul>
 
-                <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+                <!-- Language Selector -->
+                <div class="lang-selector">
+                    <button class="lang-selector__btn is-active" data-lang="en" aria-label="English">EN</button>
+                    <button class="lang-selector__btn" data-lang="it" aria-label="Italiano">IT</button>
+                    <button class="lang-selector__btn" data-lang="pt" aria-label="Português">PT</button>
+                    <button class="lang-selector__btn" data-lang="es" aria-label="Español">ES</button>
+                </div>
+
+                <button class="nav-toggle" id="navToggle" data-i18n-aria="nav.menu" aria-expanded="false" aria-controls="navLinks">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
@@ -91,16 +103,10 @@
             </div>
 
             <div class="hero-content">
-                <p class="hero-tagline">Multi Family Office</p>
-                <h1 class="hero-title">
-                    Onde grandes patrimônios encontram<br>
-                    visão de longo prazo
-                </h1>
-                <p class="hero-subtitle">
-                    Assim como os grandes impérios, fortunas duradouras se constroem<br>
-                    com estratégia, disciplina e visão de longo prazo.
-                </p>
-                <a href="#servicos" class="hero-cta">Conheça nossos serviços</a>
+                <p class="hero-tagline" data-i18n="hero.tagline">Multi Family Office</p>
+                <h1 class="hero-title" data-i18n="hero.title">Where great fortunes find long-term vision</h1>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">Like great empires, lasting fortunes are built with strategy, discipline and long-term vision.</p>
+                <a href="#servicos" class="hero-cta" data-i18n="hero.cta">Discover our services</a>
             </div>
 
             <div class="hero-scroll" aria-hidden="true">
@@ -113,54 +119,42 @@
         <section class="section section--about" id="sobre">
             <div class="container">
                 <div class="about-split">
-                    <!-- Left: Image collage -->
                     <div class="about-images" data-reveal>
                         <div class="about-images__main">
                             <img src="https://images.unsplash.com/photo-1759685640297-6c353f4aefe8?w=800&q=80&fit=crop"
-                                 alt="Castelo italiano com torres e jardins"
+                                 data-i18n-alt="about.img1.alt"
+                                 alt="Italian castle with towers and gardens"
                                  loading="lazy">
                         </div>
                         <div class="about-images__accent">
                             <img src="https://images.unsplash.com/photo-1745162927406-2fd33c478a6f?w=600&q=80&fit=crop"
-                                 alt="Castelo medieval entre colinas verdes na Itália"
+                                 data-i18n-alt="about.img2.alt"
+                                 alt="Medieval castle among green hills in Italy"
                                  loading="lazy">
                         </div>
                     </div>
 
-                    <!-- Right: Content -->
                     <div class="about-content">
                         <div class="section__label">
-                            <span class="section__number">01</span>
-                            <span class="section__tag">Sobre nós</span>
+                            <span class="section__number" data-i18n="about.number">01</span>
+                            <span class="section__tag" data-i18n="about.label">About us</span>
                         </div>
-                        <h2 class="section__title section__title--accent">
-                            Independência fiduciária<br>a serviço do seu <em>legado</em>
-                        </h2>
-                        <p class="section__text">
-                            A PV Imperiale é um Multi Family Office independente que atua
-                            exclusivamente no interesse das famílias que atende. Não representamos
-                            bancos, corretoras ou gestoras — nossa única lealdade é com o patrimônio
-                            e os objetivos de cada família.
-                        </p>
-                        <p class="section__text">
-                            Integramos investimentos globais, planejamento tributário e sucessório,
-                            governança familiar e gestão de ativos reais em uma visão consolidada
-                            e de longo prazo. Cada decisão passa por um rigoroso processo fiduciário
-                            que prioriza preservação, eficiência fiscal e transferência intergeracional.
-                        </p>
+                        <h2 class="section__title section__title--accent" data-i18n="about.title">Fiduciary independence<br>at the service of your <em>legacy</em></h2>
+                        <p class="section__text" data-i18n="about.p1">PV Imperiale is an independent Multi Family Office that acts exclusively in the interest of the families it serves. We do not represent banks, brokers or asset managers — our sole loyalty is to the wealth and goals of each family.</p>
+                        <p class="section__text" data-i18n="about.p2">We integrate global investments, tax and succession planning, family governance and real asset management into a consolidated, long-term vision. Every decision goes through a rigorous fiduciary process that prioritizes preservation, tax efficiency and intergenerational transfer.</p>
 
                         <div class="stats">
                             <div class="stats__item" data-reveal>
-                                <span class="stats__value">360°</span>
-                                <span class="stats__label">Visão Patrimonial</span>
+                                <span class="stats__value" data-i18n="about.stat1.value">360°</span>
+                                <span class="stats__label" data-i18n="about.stat1.label">Wealth Vision</span>
                             </div>
                             <div class="stats__item" data-reveal>
-                                <span class="stats__value">100%</span>
-                                <span class="stats__label">Independência</span>
+                                <span class="stats__value" data-i18n="about.stat2.value">100%</span>
+                                <span class="stats__label" data-i18n="about.stat2.label">Independence</span>
                             </div>
                             <div class="stats__item" data-reveal>
-                                <span class="stats__value">Global</span>
-                                <span class="stats__label">Atuação</span>
+                                <span class="stats__value" data-i18n="about.stat3.value">Global</span>
+                                <span class="stats__label" data-i18n="about.stat3.label">Reach</span>
                             </div>
                         </div>
                     </div>
@@ -173,16 +167,13 @@
             <div class="container">
                 <div class="section__header">
                     <div class="section__label">
-                        <span class="section__number">02</span>
-                        <span class="section__tag">Serviços</span>
+                        <span class="section__number" data-i18n="services.number">02</span>
+                        <span class="section__tag" data-i18n="services.label">Services</span>
                     </div>
-                    <h2 class="section__title section__title--accent">
-                        Soluções integradas para<br>cada dimensão do seu patrimônio
-                    </h2>
+                    <h2 class="section__title section__title--accent" data-i18n="services.title">Integrated solutions for<br>every dimension of your wealth</h2>
                 </div>
 
                 <div class="services">
-                    <!-- Investimentos -->
                     <article class="service-card" data-reveal style="--card-bg: url('https://images.unsplash.com/photo-1560221328-12fe60f83ab8?w=800&q=60&fit=crop')">
                         <div class="service-card__bg" aria-hidden="true"></div>
                         <div class="service-card__icon" aria-hidden="true">
@@ -192,18 +183,17 @@
                                 <line x1="4" y1="36" x2="36" y2="36"/>
                             </svg>
                         </div>
-                        <h3 class="service-card__title">Investimentos</h3>
-                        <p class="service-card__desc">Alocação global diversificada com acesso a veículos exclusivos, fundos offshore e carteiras sob medida.</p>
+                        <h3 class="service-card__title" data-i18n="services.inv.title">Investments</h3>
+                        <p class="service-card__desc" data-i18n="services.inv.desc">Diversified global allocation with access to exclusive vehicles, offshore funds and bespoke portfolios.</p>
                         <ul class="service-card__list">
-                            <li>Investimentos offshore e onshore</li>
-                            <li>Carteiras administradas e fundos exclusivos</li>
-                            <li>Consolidação global de portfólio</li>
-                            <li>Acompanhamento tributário internacional</li>
-                            <li>Acesso a co-investimentos e deals privados</li>
+                            <li data-i18n="services.inv.1">Offshore and onshore investments</li>
+                            <li data-i18n="services.inv.2">Managed portfolios and exclusive funds</li>
+                            <li data-i18n="services.inv.3">Global portfolio consolidation</li>
+                            <li data-i18n="services.inv.4">International tax monitoring</li>
+                            <li data-i18n="services.inv.5">Access to co-investments and private deals</li>
                         </ul>
                     </article>
 
-                    <!-- Planejamento Patrimonial -->
                     <article class="service-card" data-reveal style="--card-bg: url('https://images.unsplash.com/photo-1758612120966-b20c01160c7b?w=800&q=60&fit=crop')">
                         <div class="service-card__bg" aria-hidden="true"></div>
                         <div class="service-card__icon" aria-hidden="true">
@@ -214,18 +204,17 @@
                                 <line x1="14" y1="28" x2="22" y2="28"/>
                             </svg>
                         </div>
-                        <h3 class="service-card__title">Planejamento Patrimonial</h3>
-                        <p class="service-card__desc">Estruturação jurídica e tributária que protege, organiza e prepara a transferência do patrimônio entre gerações.</p>
+                        <h3 class="service-card__title" data-i18n="services.plan.title">Wealth Planning</h3>
+                        <p class="service-card__desc" data-i18n="services.plan.desc">Legal and tax structuring that protects, organizes and prepares the transfer of wealth across generations.</p>
                         <ul class="service-card__list">
-                            <li>Estruturas offshore e holdings familiares</li>
-                            <li>Planejamento sucessório e tributário</li>
-                            <li>Organização patrimonial e societária</li>
-                            <li>Governança familiar e protocolos de decisão</li>
-                            <li>Acompanhamento contínuo e compliance</li>
+                            <li data-i18n="services.plan.1">Offshore structures and family holdings</li>
+                            <li data-i18n="services.plan.2">Succession and tax planning</li>
+                            <li data-i18n="services.plan.3">Wealth and corporate organization</li>
+                            <li data-i18n="services.plan.4">Family governance and decision protocols</li>
+                            <li data-i18n="services.plan.5">Ongoing monitoring and compliance</li>
                         </ul>
                     </article>
 
-                    <!-- Gestão de Contas -->
                     <article class="service-card" data-reveal style="--card-bg: url('https://images.unsplash.com/photo-1760972543716-eb03ada2adb4?w=800&q=60&fit=crop')">
                         <div class="service-card__bg" aria-hidden="true"></div>
                         <div class="service-card__icon" aria-hidden="true">
@@ -235,18 +224,17 @@
                                 <line x1="12" y1="26" x2="20" y2="26"/>
                             </svg>
                         </div>
-                        <h3 class="service-card__title">Gestão de Contas</h3>
-                        <p class="service-card__desc">Tesouraria integrada que controla fluxo de caixa, obrigações e operações financeiras da família e suas estruturas.</p>
+                        <h3 class="service-card__title" data-i18n="services.acc.title">Account Management</h3>
+                        <p class="service-card__desc" data-i18n="services.acc.desc">Integrated treasury that controls cash flow, obligations and financial operations of the family and its structures.</p>
                         <ul class="service-card__list">
-                            <li>Controle de liquidez e fluxo de caixa</li>
-                            <li>Tesouraria familiar e de holdings</li>
-                            <li>Gestão de seguros patrimoniais e pessoais</li>
-                            <li>Controle de mútuos, doações e empréstimos</li>
-                            <li>Suporte contábil e gestão de funcionários pessoais</li>
+                            <li data-i18n="services.acc.1">Liquidity and cash flow management</li>
+                            <li data-i18n="services.acc.2">Family and holding treasury</li>
+                            <li data-i18n="services.acc.3">Wealth and personal insurance management</li>
+                            <li data-i18n="services.acc.4">Loan, donation and lending control</li>
+                            <li data-i18n="services.acc.5">Accounting support and personal staff management</li>
                         </ul>
                     </article>
 
-                    <!-- Gestão de Imóveis -->
                     <article class="service-card" data-reveal style="--card-bg: url('https://images.unsplash.com/photo-1694269384788-548ce9faaa64?w=800&q=60&fit=crop')">
                         <div class="service-card__bg" aria-hidden="true"></div>
                         <div class="service-card__icon" aria-hidden="true">
@@ -255,13 +243,13 @@
                                 <rect x="16" y="24" width="8" height="12"/>
                             </svg>
                         </div>
-                        <h3 class="service-card__title">Gestão de Imóveis</h3>
-                        <p class="service-card__desc">Visão consolidada da carteira imobiliária global — da avaliação e precificação à identificação de novos negócios.</p>
+                        <h3 class="service-card__title" data-i18n="services.re.title">Real Estate Management</h3>
+                        <p class="service-card__desc" data-i18n="services.re.desc">Consolidated view of the global real estate portfolio — from valuation and pricing to identifying new opportunities.</p>
                         <ul class="service-card__list">
-                            <li>Gestão ativa da carteira imobiliária</li>
-                            <li>Consolidação global dos ativos imobiliários</li>
-                            <li>Avaliação e precificação periódica</li>
-                            <li>Originação de novos negócios e oportunidades</li>
+                            <li data-i18n="services.re.1">Active real estate portfolio management</li>
+                            <li data-i18n="services.re.2">Global real estate asset consolidation</li>
+                            <li data-i18n="services.re.3">Periodic valuation and pricing</li>
+                            <li data-i18n="services.re.4">New business and opportunity origination</li>
                         </ul>
                     </article>
                 </div>
@@ -269,15 +257,13 @@
         </section>
 
         <!-- ══════════ CTA BREAK ══════════ -->
-        <section class="cta-break" aria-label="Chamada para ação">
+        <section class="cta-break" aria-label="Call to action">
             <div class="cta-break__bg" aria-hidden="true"></div>
             <div class="container">
                 <div class="cta-break__content">
-                    <p class="cta-break__tagline">Próximo passo</p>
-                    <h2 class="cta-break__title">
-                        Seu patrimônio merece uma<br>gestão à altura do seu legado
-                    </h2>
-                    <a href="#contato" class="cta-break__btn">Agende uma conversa confidencial</a>
+                    <p class="cta-break__tagline" data-i18n="cta.tagline">Next step</p>
+                    <h2 class="cta-break__title" data-i18n="cta.title">Your wealth deserves<br>management worthy of your legacy</h2>
+                    <a href="#contato" class="cta-break__btn" data-i18n="cta.button">Schedule a confidential conversation</a>
                 </div>
             </div>
         </section>
@@ -287,58 +273,39 @@
             <div class="container">
                 <div class="section__grid">
                     <div class="section__label">
-                        <span class="section__number">03</span>
-                        <span class="section__tag">Abordagem</span>
+                        <span class="section__number" data-i18n="approach.number">03</span>
+                        <span class="section__tag" data-i18n="approach.label">Approach</span>
                     </div>
                     <div class="section__body">
-                        <h2 class="section__title section__title--accent">Como atuamos</h2>
+                        <h2 class="section__title section__title--accent" data-i18n="approach.title">How we work</h2>
 
                         <div class="steps">
                             <div class="steps__item" data-reveal>
                                 <span class="steps__number">I</span>
                                 <div class="steps__content">
-                                    <h4 class="steps__title">Diagnóstico Patrimonial</h4>
-                                    <p class="steps__text">
-                                        Mapeamento completo de ativos, passivos, estruturas societárias,
-                                        jurisdições e objetivos de cada membro da família. Identificamos
-                                        riscos, ineficiências fiscais e oportunidades de reorganização.
-                                    </p>
+                                    <h4 class="steps__title" data-i18n="approach.step1.title">Wealth Diagnosis</h4>
+                                    <p class="steps__text" data-i18n="approach.step1.text">Complete mapping of assets, liabilities, corporate structures, jurisdictions and goals of each family member. We identify risks, tax inefficiencies and reorganization opportunities.</p>
                                 </div>
                             </div>
                             <div class="steps__item" data-reveal>
                                 <span class="steps__number">II</span>
                                 <div class="steps__content">
-                                    <h4 class="steps__title">Planejamento Estratégico</h4>
-                                    <p class="steps__text">
-                                        Construção de uma estratégia personalizada que integra
-                                        investimentos, proteção patrimonial, eficiência tributária
-                                        e plano sucessório — sempre alinhada aos valores e à visão
-                                        de longo prazo da família.
-                                    </p>
+                                    <h4 class="steps__title" data-i18n="approach.step2.title">Strategic Planning</h4>
+                                    <p class="steps__text" data-i18n="approach.step2.text">Building a personalized strategy that integrates investments, wealth protection, tax efficiency and succession planning — always aligned with the family's values and long-term vision.</p>
                                 </div>
                             </div>
                             <div class="steps__item" data-reveal>
                                 <span class="steps__number">III</span>
                                 <div class="steps__content">
-                                    <h4 class="steps__title">Implementação Coordenada</h4>
-                                    <p class="steps__text">
-                                        Execução com uma rede de especialistas em cada jurisdição
-                                        e disciplina — advogados, contadores, gestores, bancos privados —
-                                        sob nossa coordenação centralizada para garantir coerência
-                                        e compliance em cada etapa.
-                                    </p>
+                                    <h4 class="steps__title" data-i18n="approach.step3.title">Coordinated Implementation</h4>
+                                    <p class="steps__text" data-i18n="approach.step3.text">Execution with a network of specialists in each jurisdiction and discipline — lawyers, accountants, managers, private banks — under our centralized coordination to ensure coherence and compliance at every stage.</p>
                                 </div>
                             </div>
                             <div class="steps__item" data-reveal>
                                 <span class="steps__number">IV</span>
                                 <div class="steps__content">
-                                    <h4 class="steps__title">Monitoramento Contínuo</h4>
-                                    <p class="steps__text">
-                                        Acompanhamento permanente com relatórios consolidados,
-                                        revisões periódicas de alocação e ajustes proativos diante
-                                        de mudanças regulatórias, cenários de mercado ou eventos
-                                        na dinâmica familiar.
-                                    </p>
+                                    <h4 class="steps__title" data-i18n="approach.step4.title">Continuous Monitoring</h4>
+                                    <p class="steps__text" data-i18n="approach.step4.text">Ongoing monitoring with consolidated reports, periodic allocation reviews and proactive adjustments in response to regulatory changes, market scenarios or events in family dynamics.</p>
                                 </div>
                             </div>
                         </div>
@@ -353,31 +320,25 @@
                 <div class="contact">
                     <div class="contact__info">
                         <div class="section__label">
-                            <span class="section__number">04</span>
-                            <span class="section__tag">Contato</span>
+                            <span class="section__number" data-i18n="contact.number">04</span>
+                            <span class="section__tag" data-i18n="contact.label">Contact</span>
                         </div>
-                        <h2 class="section__title section__title--accent">
-                            Cada grande patrimônio<br>começa com uma conversa
-                        </h2>
-                        <p class="section__text">
-                            Se você busca uma gestão patrimonial verdadeiramente independente,
-                            com visão global e compromisso fiduciário, entre em contato para
-                            uma conversa confidencial e sem compromisso.
-                        </p>
+                        <h2 class="section__title section__title--accent" data-i18n="contact.title">Every great fortune<br>begins with a conversation</h2>
+                        <p class="section__text" data-i18n="contact.text">If you seek truly independent wealth management, with global vision and fiduciary commitment, get in touch for a confidential, no-obligation conversation.</p>
 
                         <address class="contact__details">
                             <div class="contact__item">
-                                <span class="contact__label">Email</span>
-                                <a href="mailto:contato@pvimperiale.com.br">contato@pvimperiale.com.br</a>
+                                <span class="contact__label" data-i18n="contact.email.label">Email</span>
+                                <a href="mailto:info@pvimperiale.com">info@pvimperiale.com</a>
                             </div>
                             <div class="contact__item">
-                                <span class="contact__label">Telefone</span>
-                                <a href="tel:+5511999999999">+55 (11) 99999-9999</a>
+                                <span class="contact__label" data-i18n="contact.phone.label">Phone</span>
+                                <a href="tel:+351911049827">+351 911 049 827</a>
                             </div>
                         </address>
 
                         <div class="contact__social">
-                            <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="contact__social-link">
+                            <a href="https://wa.me/351911049827" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="contact__social-link">
                                 <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
                                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                                 </svg>
@@ -399,23 +360,23 @@
                         <form class="contact-form" id="contactForm" novalidate>
                             <div class="contact-form__group">
                                 <input type="text" id="name" name="name" required autocomplete="name" placeholder=" ">
-                                <label for="name">Nome completo</label>
+                                <label for="name" data-i18n="contact.form.name">Full name</label>
                             </div>
                             <div class="contact-form__group">
                                 <input type="email" id="email" name="email" required autocomplete="email" placeholder=" ">
-                                <label for="email">Email</label>
+                                <label for="email" data-i18n="contact.form.email">Email</label>
                             </div>
                             <div class="contact-form__group">
                                 <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder=" ">
-                                <label for="phone">Telefone</label>
+                                <label for="phone" data-i18n="contact.form.phone">Phone</label>
                             </div>
                             <div class="contact-form__group">
                                 <textarea id="message" name="message" rows="4" required placeholder=" "></textarea>
-                                <label for="message">Mensagem</label>
+                                <label for="message" data-i18n="contact.form.message">Message</label>
                             </div>
                             <button type="submit" class="contact-form__submit">
-                                <span class="contact-form__submit-text">Enviar mensagem</span>
-                                <span class="contact-form__submit-loading" aria-hidden="true">Enviando...</span>
+                                <span class="contact-form__submit-text" data-i18n="contact.form.submit">Send message</span>
+                                <span class="contact-form__submit-loading" aria-hidden="true" data-i18n="contact.form.sending">Sending...</span>
                             </button>
                         </form>
                     </div>
@@ -434,43 +395,34 @@
                         <span class="logo-separator" aria-hidden="true"></span>
                         <span class="logo-imperiale">IMPERIALE</span>
                     </a>
-                    <p class="footer__tagline">
-                        Multi Family Office independente.<br>
-                        Gestão patrimonial 360° com visão global<br>
-                        e compromisso fiduciário.
-                    </p>
+                    <p class="footer__tagline" data-i18n="footer.tagline">Independent Multi Family Office.<br>360° wealth management with global vision<br>and fiduciary commitment.</p>
                 </div>
 
-                <nav class="footer__nav" aria-label="Links do rodapé">
-                    <h4 class="footer__heading">Navegação</h4>
+                <nav class="footer__nav" aria-label="Footer links">
+                    <h4 class="footer__heading" data-i18n="footer.nav.title">Navigation</h4>
                     <ul>
-                        <li><a href="#sobre">Sobre</a></li>
-                        <li><a href="#servicos">Serviços</a></li>
-                        <li><a href="#abordagem">Abordagem</a></li>
-                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="#sobre" data-i18n="nav.about">About</a></li>
+                        <li><a href="#servicos" data-i18n="nav.services">Services</a></li>
+                        <li><a href="#abordagem" data-i18n="nav.approach">Approach</a></li>
+                        <li><a href="#contato" data-i18n="nav.contact">Contact</a></li>
                     </ul>
                 </nav>
 
-                <nav class="footer__nav" aria-label="Serviços">
-                    <h4 class="footer__heading">Serviços</h4>
+                <nav class="footer__nav" aria-label="Services">
+                    <h4 class="footer__heading" data-i18n="footer.services.title">Services</h4>
                     <ul>
-                        <li><a href="#servicos">Investimentos Globais</a></li>
-                        <li><a href="#servicos">Planejamento Patrimonial</a></li>
-                        <li><a href="#servicos">Gestão de Contas</a></li>
-                        <li><a href="#servicos">Gestão de Imóveis</a></li>
+                        <li><a href="#servicos" data-i18n="footer.services.1">Global Investments</a></li>
+                        <li><a href="#servicos" data-i18n="footer.services.2">Wealth Planning</a></li>
+                        <li><a href="#servicos" data-i18n="footer.services.3">Account Management</a></li>
+                        <li><a href="#servicos" data-i18n="footer.services.4">Real Estate Management</a></li>
                     </ul>
                 </nav>
             </div>
 
             <div class="footer__bottom">
-                <p>&copy; 2026 PV Imperiale. Todos os direitos reservados.</p>
-                <p class="footer__disclaimer">
-                    As informações contidas neste site são de caráter informativo
-                    e não constituem oferta, solicitação ou recomendação de produtos
-                    ou serviços financeiros. Rentabilidade passada não é garantia
-                    de resultados futuros.
-                </p>
-                <a href="#hero" class="footer__back-to-top" aria-label="Voltar ao topo">
+                <p data-i18n="footer.copyright">&copy; 2026 PV Imperiale. All rights reserved.</p>
+                <p class="footer__disclaimer" data-i18n="footer.disclaimer">The information contained on this website is for informational purposes only and does not constitute an offer, solicitation or recommendation of financial products or services. Past performance is no guarantee of future results.</p>
+                <a href="#hero" class="footer__back-to-top" data-i18n-aria="footer.backtotop">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
                         <polyline points="18 15 12 9 6 15"/>
                     </svg>
@@ -480,6 +432,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="js/i18n.js"></script>
     <script src="js/ticker.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/animations.js"></script>

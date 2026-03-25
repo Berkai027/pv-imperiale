@@ -127,3 +127,38 @@
 .nav-toggle.is-active span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
 }
+
+/* ═══════════ LANGUAGE SELECTOR ═══════════ */
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: 1.5rem;
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--c-border);
+}
+
+.lang-selector__btn {
+    background: none;
+    border: 1px solid transparent;
+    color: var(--c-text-dim);
+    font-family: var(--f-body);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    padding: 4px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out);
+}
+
+.lang-selector__btn:hover {
+    color: var(--c-text);
+    border-color: rgba(123, 45, 59, 0.3);
+}
+
+.lang-selector__btn.is-active {
+    color: var(--c-primary-light);
+    border-color: var(--c-primary);
+    background: rgba(123, 45, 59, 0.12);
+}

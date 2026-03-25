@@ -4,7 +4,8 @@
  * ═══════════════════════════════════════
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await I18n.init();
     Ticker.init();
     Navigation.init();
     Animations.init();
