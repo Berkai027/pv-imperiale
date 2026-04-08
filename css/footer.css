@@ -62,7 +62,7 @@
     font-size: 0.68rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.55);
     margin-bottom: 1.5rem;
     font-weight: 500;
 }
@@ -99,7 +99,8 @@
     color: #fff;
 }
 
-.footer__nav a:hover::after {
+.footer__nav a:hover::after,
+.footer__nav a:focus-visible::after {
     width: 100%;
 }
 
@@ -114,7 +115,7 @@
 
 .footer__bottom p {
     font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .footer__disclaimer {
@@ -137,7 +138,8 @@
     flex-shrink: 0;
 }
 
-.footer__back-to-top:hover {
+.footer__back-to-top:hover,
+.footer__back-to-top:focus-visible {
     border-color: var(--c-primary-light);
     color: var(--c-primary-light);
     transform: translateY(-3px);

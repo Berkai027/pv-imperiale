@@ -7,17 +7,32 @@
 const Animations = (() => {
     'use strict';
 
-    // ── Scroll reveal for [data-reveal] elements ──
+    // Feature detection
+    const hasIO = 'IntersectionObserver' in window;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     function initReveal() {
         const elements = document.querySelectorAll('[data-reveal]');
         if (elements.length === 0) return;
+
+        // If no IO support or reduced motion, show everything immediately
+        if (!hasIO || prefersReducedMotion) {
+            elements.forEach(el => el.classList.add('is-visible'));
+            return;
+        }
+
+        // Pre-cache sibling indices for performance
+        const indexCache = new Map();
+        elements.forEach(el => {
+            const siblings = el.parentElement.querySelectorAll('[data-reveal]');
+            indexCache.set(el, Array.from(siblings).indexOf(el));
+        });
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
 
-                const siblings = entry.target.parentElement.querySelectorAll('[data-reveal]');
-                const siblingIndex = Array.from(siblings).indexOf(entry.target);
+                const siblingIndex = indexCache.get(entry.target) || 0;
                 const delay = siblingIndex * 100;
 
                 setTimeout(() => {
@@ -34,10 +49,14 @@ const Animations = (() => {
         elements.forEach(el => observer.observe(el));
     }
 
-    // ── Section-level fade for [data-reveal-section] ──
     function initSectionReveal() {
         const sections = document.querySelectorAll('[data-reveal-section]');
         if (sections.length === 0) return;
+
+        if (!hasIO || prefersReducedMotion) {
+            sections.forEach(el => el.classList.add('is-visible'));
+            return;
+        }
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -46,24 +65,23 @@ const Animations = (() => {
                     observer.unobserve(entry.target);
                 }
             });
-        }, {
-            threshold: 0.05,
-        });
+        }, { threshold: 0.05 });
 
         sections.forEach(el => observer.observe(el));
     }
 
-    // ── Hero parallax — image moves at 0.3x scroll speed ──
     function initParallax() {
         const heroImage = document.querySelector('.hero-image');
         if (!heroImage) return;
 
-        // Disable on mobile for performance
-        if (window.innerWidth < 768) return;
+        // Disable for reduced motion or mobile
+        if (prefersReducedMotion) return;
+        const mq = window.matchMedia('(min-width: 768px)');
+        if (!mq.matches) return;
 
         let ticking = false;
 
-        window.addEventListener('scroll', () => {
+        function onScroll() {
             if (ticking) return;
             ticking = true;
 
@@ -74,7 +92,19 @@ const Animations = (() => {
                 }
                 ticking = false;
             });
-        }, { passive: true });
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Stop parallax if viewport resizes to mobile
+        mq.addEventListener('change', (e) => {
+            if (!e.matches) {
+                window.removeEventListener('scroll', onScroll);
+                heroImage.style.transform = '';
+            } else {
+                window.addEventListener('scroll', onScroll, { passive: true });
+            }
+        });
     }
 
     function init() {

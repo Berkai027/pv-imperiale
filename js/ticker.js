@@ -9,29 +9,21 @@
 const Ticker = (() => {
     'use strict';
 
-    // Brapi free API — real B3 + international data
     const BRAPI_BASE = 'https://brapi.dev/api';
+    const FETCH_TIMEOUT = 5000;
+    let refreshInterval = null;
 
-    // Tickers to display: B3 stocks + indices + currencies + crypto
     const BR_TICKERS = ['PETR4', 'VALE3', 'ITUB4', 'BBDC4', 'WEGE3', 'ABEV3'];
     const INTL_TICKERS = ['^BVSP', '^GSPC', '^IXIC', '^DJI', '^FTSE', '^N225'];
     const CURRENCY_TICKERS = ['USDBRL', 'EURBRL', 'GBPBRL'];
     const CRYPTO_TICKERS = ['BTC', 'ETH'];
 
-    // Friendly names for indices
     const DISPLAY_NAMES = {
-        '^BVSP': 'IBOV',
-        '^GSPC': 'S&P 500',
-        '^IXIC': 'NASDAQ',
-        '^DJI': 'DOW',
-        '^FTSE': 'FTSE 100',
-        '^N225': 'NIKKEI',
-        'USDBRL': 'USD/BRL',
-        'EURBRL': 'EUR/BRL',
-        'GBPBRL': 'GBP/BRL',
+        '^BVSP': 'IBOV', '^GSPC': 'S&P 500', '^IXIC': 'NASDAQ',
+        '^DJI': 'DOW', '^FTSE': 'FTSE 100', '^N225': 'NIKKEI',
+        'USDBRL': 'USD/BRL', 'EURBRL': 'EUR/BRL', 'GBPBRL': 'GBP/BRL',
     };
 
-    // Static fallback data (used when API is unavailable)
     const FALLBACK_DATA = [
         { symbol: 'IBOV', price: '128.450', change: '+0,85%', direction: 'up' },
         { symbol: 'S&P 500', price: '5.234,18', change: '+0,42%', direction: 'up' },
@@ -53,7 +45,13 @@ const Ticker = (() => {
         { symbol: 'NIKKEI', price: '38.920,45', change: '+1,05%', direction: 'up' },
     ];
 
-    // Format number to Brazilian locale
+    // Escape HTML to prevent XSS from API data
+    function escapeHTML(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
     function formatPrice(value) {
         if (value == null) return '—';
         return value.toLocaleString('pt-BR', {
@@ -68,33 +66,48 @@ const Ticker = (() => {
         return sign + value.toFixed(2).replace('.', ',') + '%';
     }
 
-    // Fetch quotes from Brapi
+    // Fetch with timeout via AbortController
+    async function fetchWithTimeout(url, ms) {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), ms);
+        try {
+            const res = await fetch(url, { signal: controller.signal });
+            return res;
+        } finally {
+            clearTimeout(timer);
+        }
+    }
+
     async function fetchQuotes() {
         try {
             const allTickers = [...BR_TICKERS, ...INTL_TICKERS, ...CURRENCY_TICKERS].join(',');
-            const response = await fetch(`${BRAPI_BASE}/quote/${encodeURIComponent(allTickers)}?fundamental=false`);
+            const response = await fetchWithTimeout(
+                `${BRAPI_BASE}/quote/${encodeURIComponent(allTickers)}?fundamental=false`,
+                FETCH_TIMEOUT
+            );
 
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const data = await response.json();
-
             if (!data.results || data.results.length === 0) throw new Error('No results');
 
             const items = data.results.map(q => ({
-                symbol: DISPLAY_NAMES[q.symbol] || q.symbol,
+                symbol: DISPLAY_NAMES[q.symbol] || String(q.symbol),
                 price: formatPrice(q.regularMarketPrice),
                 change: formatChange(q.regularMarketChangePercent),
                 direction: q.regularMarketChangePercent >= 0 ? 'up' : 'down',
             }));
 
-            // Add crypto separately (Brapi has a different endpoint)
             try {
-                const cryptoRes = await fetch(`${BRAPI_BASE}/v2/crypto?coin=BTC,ETH&currency=BRL`);
+                const cryptoRes = await fetchWithTimeout(
+                    `${BRAPI_BASE}/v2/crypto?coin=BTC,ETH&currency=BRL`,
+                    FETCH_TIMEOUT
+                );
                 if (cryptoRes.ok) {
                     const cryptoData = await cryptoRes.json();
                     if (cryptoData.coins) {
                         cryptoData.coins.forEach(c => {
                             items.push({
-                                symbol: c.coin,
+                                symbol: String(c.coin),
                                 price: formatPrice(c.regularMarketPrice),
                                 change: formatChange(c.regularMarketChangePercent),
                                 direction: c.regularMarketChangePercent >= 0 ? 'up' : 'down',
@@ -103,58 +116,78 @@ const Ticker = (() => {
                     }
                 }
             } catch {
-                // Crypto fetch failed silently — use fallback for crypto only
                 FALLBACK_DATA
                     .filter(f => CRYPTO_TICKERS.includes(f.symbol))
                     .forEach(f => items.push(f));
             }
 
             return items;
-        } catch (err) {
-            console.warn('[Ticker] API indisponível, usando dados estáticos:', err.message);
+        } catch {
             return FALLBACK_DATA;
         }
     }
 
-    // Build HTML for ticker items
-    function buildHTML(items) {
-        return items.map((item, i) => {
-            const divider = i < items.length - 1
-                ? '<span class="ticker-divider" aria-hidden="true"></span>'
-                : '';
-            return `
-                <span class="ticker-item">
-                    <span class="ticker-item__symbol">${item.symbol}</span>
-                    <span class="ticker-item__price">${item.price}</span>
-                    <span class="ticker-item__change ticker-item__change--${item.direction}">${item.change}</span>
-                </span>
-                ${divider}
-            `;
-        }).join('');
+    // Build DOM nodes instead of innerHTML (XSS-safe)
+    function buildDOM(items, container) {
+        const frag = document.createDocumentFragment();
+        items.forEach((item, i) => {
+            const span = document.createElement('span');
+            span.className = 'ticker-item';
+
+            const sym = document.createElement('span');
+            sym.className = 'ticker-item__symbol';
+            sym.textContent = item.symbol;
+
+            const price = document.createElement('span');
+            price.className = 'ticker-item__price';
+            price.textContent = item.price;
+
+            const change = document.createElement('span');
+            change.className = `ticker-item__change ticker-item__change--${item.direction === 'up' ? 'up' : 'down'}`;
+            change.textContent = item.change;
+
+            span.appendChild(sym);
+            span.appendChild(price);
+            span.appendChild(change);
+            frag.appendChild(span);
+
+            if (i < items.length - 1) {
+                const divider = document.createElement('span');
+                divider.className = 'ticker-divider';
+                divider.setAttribute('aria-hidden', 'true');
+                frag.appendChild(divider);
+            }
+        });
+        container.innerHTML = '';
+        container.appendChild(frag);
     }
 
-    // Render ticker
     function render(items) {
         const content = document.getElementById('tickerContent');
         const clone = document.getElementById('tickerContentClone');
         if (!content || !clone) return;
 
-        const html = buildHTML(items);
-        content.innerHTML = html;
-        clone.innerHTML = html;
+        buildDOM(items, content);
+        buildDOM(items, clone);
     }
 
-    // Public init
+    function destroy() {
+        if (refreshInterval) {
+            clearInterval(refreshInterval);
+            refreshInterval = null;
+        }
+    }
+
     async function init() {
         const items = await fetchQuotes();
         render(items);
 
-        // Refresh every 5 minutes
-        setInterval(async () => {
+        destroy(); // Clear any existing interval
+        refreshInterval = setInterval(async () => {
             const updated = await fetchQuotes();
             render(updated);
         }, 5 * 60 * 1000);
     }
 
-    return { init };
+    return { init, destroy };
 })();

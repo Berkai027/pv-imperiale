@@ -1,36 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9X38M2S9T0"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-9X38M2S9T0');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="PV Imperiale — Independent Multi Family Office. 360° wealth management, global investments, succession planning, offshore structures and family governance for high-net-worth families.">
     <meta name="keywords" content="multi family office, wealth management, offshore investments, succession planning, family governance, family office, trust, holding">
     <meta name="author" content="PV Imperiale">
     <meta name="theme-color" content="#0B0A0D">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- SEO: Canonical & Hreflang -->
+    <link rel="canonical" href="https://pvimperiale.com/">
+    <link rel="alternate" hreflang="en" href="https://pvimperiale.com/">
+    <link rel="alternate" hreflang="it" href="https://pvimperiale.com/">
+    <link rel="alternate" hreflang="pt" href="https://pvimperiale.com/">
+    <link rel="alternate" hreflang="es" href="https://pvimperiale.com/">
+    <link rel="alternate" hreflang="x-default" href="https://pvimperiale.com/">
 
     <!-- Open Graph -->
     <meta property="og:title" content="PV Imperiale | Multi Family Office">
     <meta property="og:description" content="360° wealth management with global vision. Investments, succession planning, family governance and legacy protection for high-net-worth families.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://pvimperiale.com/">
+    <meta property="og:site_name" content="PV Imperiale">
+    <meta property="og:image" content="https://pvimperiale.com/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PV Imperiale | Multi Family Office">
+    <meta name="twitter:description" content="360° wealth management with global vision for high-net-worth families.">
+    <meta name="twitter:image" content="https://pvimperiale.com/assets/og-image.png">
 
     <title>PV Imperiale | Multi Family Office</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link rel="apple-touch-icon" href="assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png">
 
-    <!-- Fonts -->
+    <!-- Preconnect & Preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="dns-prefetch" href="https://brapi.dev">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1694269384788-548ce9faaa64?w=1920&q=80&fit=crop">
+
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Styles -->
@@ -46,8 +63,43 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "PV Imperiale",
+        "description": "Independent Multi Family Office — 360° wealth management for high-net-worth families.",
+        "url": "https://pvimperiale.com",
+        "email": "info@pvimperiale.com",
+        "telephone": "+351911049827",
+        "sameAs": [
+            "https://linkedin.com/company/pvimperiale",
+            "https://instagram.com/pvimperiale"
+        ],
+        "serviceType": ["Wealth Management", "Family Office", "Investment Advisory", "Estate Planning"]
+    }
+    </script>
+
+    <!-- Google Analytics (deferred — consent-aware stub) -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied'
+        });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9X38M2S9T0"></script>
+    <script>
+        gtag('js', new Date());
+        gtag('config', 'G-9X38M2S9T0', { anonymize_ip: true });
+    </script>
 </head>
 <body>
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
     <!-- ══════════ NYSE TICKER TAPE ══════════ -->
     <div class="ticker-tape" id="tickerTape" role="marquee" data-i18n-aria="ticker.aria">
@@ -69,11 +121,11 @@
                     <span class="logo-imperiale">IMPERIALE</span>
                 </a>
 
-                <ul class="nav-links" id="navLinks" role="menubar">
-                    <li role="none"><a href="#sobre" role="menuitem" data-i18n="nav.about">About</a></li>
-                    <li role="none"><a href="#servicos" role="menuitem" data-i18n="nav.services">Services</a></li>
-                    <li role="none"><a href="#abordagem" role="menuitem" data-i18n="nav.approach">Approach</a></li>
-                    <li role="none"><a href="#contato" role="menuitem" data-i18n="nav.contact">Contact</a></li>
+                <ul class="nav-links" id="navLinks" role="list">
+                    <li role="none"><a href="#sobre" role="listitem" data-i18n="nav.about">About</a></li>
+                    <li role="none"><a href="#servicos" role="listitem" data-i18n="nav.services">Services</a></li>
+                    <li role="none"><a href="#abordagem" role="listitem" data-i18n="nav.approach">Approach</a></li>
+                    <li role="none"><a href="#contato" role="listitem" data-i18n="nav.contact">Contact</a></li>
                 </ul>
 
                 <!-- Language Selector -->
@@ -93,7 +145,7 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <!-- ══════════ HERO ══════════ -->
         <section class="hero" id="hero">
             <div class="hero-bg" aria-hidden="true">
@@ -283,28 +335,28 @@
                             <div class="steps__item" data-reveal>
                                 <span class="steps__number">I</span>
                                 <div class="steps__content">
-                                    <h4 class="steps__title" data-i18n="approach.step1.title">Wealth Diagnosis</h4>
+                                    <h3 class="steps__title" data-i18n="approach.step1.title">Wealth Diagnosis</h3>
                                     <p class="steps__text" data-i18n="approach.step1.text">Complete mapping of assets, liabilities, corporate structures, jurisdictions and goals of each family member. We identify risks, tax inefficiencies and reorganization opportunities.</p>
                                 </div>
                             </div>
                             <div class="steps__item" data-reveal>
                                 <span class="steps__number">II</span>
                                 <div class="steps__content">
-                                    <h4 class="steps__title" data-i18n="approach.step2.title">Strategic Planning</h4>
+                                    <h3 class="steps__title" data-i18n="approach.step2.title">Strategic Planning</h3>
                                     <p class="steps__text" data-i18n="approach.step2.text">Building a personalized strategy that integrates investments, wealth protection, tax efficiency and succession planning — always aligned with the family's values and long-term vision.</p>
                                 </div>
                             </div>
                             <div class="steps__item" data-reveal>
                                 <span class="steps__number">III</span>
                                 <div class="steps__content">
-                                    <h4 class="steps__title" data-i18n="approach.step3.title">Coordinated Implementation</h4>
+                                    <h3 class="steps__title" data-i18n="approach.step3.title">Coordinated Implementation</h3>
                                     <p class="steps__text" data-i18n="approach.step3.text">Execution with a network of specialists in each jurisdiction and discipline — lawyers, accountants, managers, private banks — under our centralized coordination to ensure coherence and compliance at every stage.</p>
                                 </div>
                             </div>
                             <div class="steps__item" data-reveal>
                                 <span class="steps__number">IV</span>
                                 <div class="steps__content">
-                                    <h4 class="steps__title" data-i18n="approach.step4.title">Continuous Monitoring</h4>
+                                    <h3 class="steps__title" data-i18n="approach.step4.title">Continuous Monitoring</h3>
                                     <p class="steps__text" data-i18n="approach.step4.text">Ongoing monitoring with consolidated reports, periodic allocation reviews and proactive adjustments in response to regulatory changes, market scenarios or events in family dynamics.</p>
                                 </div>
                             </div>
@@ -399,7 +451,7 @@
                 </div>
 
                 <nav class="footer__nav" aria-label="Footer links">
-                    <h4 class="footer__heading" data-i18n="footer.nav.title">Navigation</h4>
+                    <h4 class="footer__heading" data-i18n="footer.nav.title">Navigation</h3>
                     <ul>
                         <li><a href="#sobre" data-i18n="nav.about">About</a></li>
                         <li><a href="#servicos" data-i18n="nav.services">Services</a></li>
@@ -409,7 +461,7 @@
                 </nav>
 
                 <nav class="footer__nav" aria-label="Services">
-                    <h4 class="footer__heading" data-i18n="footer.services.title">Services</h4>
+                    <h4 class="footer__heading" data-i18n="footer.services.title">Services</h3>
                     <ul>
                         <li><a href="#servicos" data-i18n="footer.services.1">Global Investments</a></li>
                         <li><a href="#servicos" data-i18n="footer.services.2">Wealth Planning</a></li>

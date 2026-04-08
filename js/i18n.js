@@ -5,11 +5,26 @@
 const I18n = (() => {
     const SUPPORTED = ['en', 'it', 'pt', 'es'];
     const DEFAULT = 'en';
+    // Keys that legitimately contain HTML (<br>, <em>)
+    const HTML_KEYS = new Set([
+        'hero.title', 'about.title', 'services.title', 'cta.title',
+        'contact.title', 'footer.tagline',
+    ]);
     let translations = {};
     let currentLocale = DEFAULT;
 
+    function safeGetStorage(key) {
+        try { return localStorage.getItem(key); }
+        catch { return null; }
+    }
+
+    function safeSetStorage(key, value) {
+        try { localStorage.setItem(key, value); }
+        catch { /* Private browsing or storage disabled */ }
+    }
+
     function getLocale() {
-        const saved = localStorage.getItem('pv-lang');
+        const saved = safeGetStorage('pv-lang');
         if (saved && SUPPORTED.includes(saved)) return saved;
 
         const browser = (navigator.language || '').slice(0, 2).toLowerCase();
@@ -24,9 +39,8 @@ const I18n = (() => {
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             translations = await res.json();
             currentLocale = locale;
-            localStorage.setItem('pv-lang', locale);
-        } catch (e) {
-            console.warn(`[i18n] Failed to load ${locale}, falling back to ${DEFAULT}`);
+            safeSetStorage('pv-lang', locale);
+        } catch {
             if (locale !== DEFAULT) {
                 return loadTranslations(DEFAULT);
             }
@@ -34,35 +48,32 @@ const I18n = (() => {
     }
 
     function apply() {
-        // Text content
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translations[key] != null) {
-                el.innerHTML = translations[key];
-            }
-        });
+        // Combined single-pass query for all i18n elements
+        const elements = document.querySelectorAll('[data-i18n], [data-i18n-placeholder], [data-i18n-aria], [data-i18n-alt]');
 
-        // Placeholders
-        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-            const key = el.getAttribute('data-i18n-placeholder');
-            if (translations[key] != null) {
-                el.placeholder = translations[key];
+        elements.forEach(el => {
+            const textKey = el.getAttribute('data-i18n');
+            if (textKey && translations[textKey] != null) {
+                if (HTML_KEYS.has(textKey)) {
+                    el.innerHTML = translations[textKey];
+                } else {
+                    el.textContent = translations[textKey];
+                }
             }
-        });
 
-        // Aria labels
-        document.querySelectorAll('[data-i18n-aria]').forEach(el => {
-            const key = el.getAttribute('data-i18n-aria');
-            if (translations[key] != null) {
-                el.setAttribute('aria-label', translations[key]);
+            const placeholderKey = el.getAttribute('data-i18n-placeholder');
+            if (placeholderKey && translations[placeholderKey] != null) {
+                el.placeholder = translations[placeholderKey];
             }
-        });
 
-        // Alt texts
-        document.querySelectorAll('[data-i18n-alt]').forEach(el => {
-            const key = el.getAttribute('data-i18n-alt');
-            if (translations[key] != null) {
-                el.setAttribute('alt', translations[key]);
+            const ariaKey = el.getAttribute('data-i18n-aria');
+            if (ariaKey && translations[ariaKey] != null) {
+                el.setAttribute('aria-label', translations[ariaKey]);
+            }
+
+            const altKey = el.getAttribute('data-i18n-alt');
+            if (altKey && translations[altKey] != null) {
+                el.setAttribute('alt', translations[altKey]);
             }
         });
 
@@ -94,9 +105,12 @@ const I18n = (() => {
             document.title = translations['meta.title'];
         }
 
-        // Update active state on language selector
-        document.querySelectorAll('.lang-selector__btn').forEach(btn => {
-            btn.classList.toggle('is-active', btn.dataset.lang === currentLocale);
+        // Update active state on language selector (cached after first call)
+        const langBtns = document.querySelectorAll('.lang-selector__btn');
+        langBtns.forEach(btn => {
+            const isActive = btn.dataset.lang === currentLocale;
+            btn.classList.toggle('is-active', isActive);
+            btn.setAttribute('aria-pressed', String(isActive));
         });
     }
 
@@ -107,20 +121,11 @@ const I18n = (() => {
         apply();
     }
 
-    function t(key) {
-        return translations[key] || key;
-    }
-
-    function getLocaleCode() {
-        return currentLocale;
-    }
-
     async function init() {
         const locale = getLocale();
         await loadTranslations(locale);
         apply();
 
-        // Bind language selector buttons
         document.querySelectorAll('.lang-selector__btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 switchLanguage(btn.dataset.lang);
@@ -128,8 +133,7 @@ const I18n = (() => {
         });
     }
 
-    return { init, switchLanguage, t, getLocaleCode };
+    return { init, switchLanguage };
 })();
 
-// Export for use in other modules
 window.I18n = I18n;

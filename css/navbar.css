@@ -105,7 +105,11 @@
     gap: 5px;
     background: none;
     border: none;
-    padding: 4px;
+    padding: 10px;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav-toggle span {
@@ -146,7 +150,9 @@
     font-size: 0.68rem;
     font-weight: 500;
     letter-spacing: 0.08em;
-    padding: 4px 8px;
+    padding: 8px 10px;
+    min-width: 36px;
+    min-height: 36px;
     border-radius: 3px;
     cursor: pointer;
     transition: all 0.3s var(--ease-out);
